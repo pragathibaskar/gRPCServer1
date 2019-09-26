@@ -1,0 +1,15 @@
+syntax = "proto3";
+package com.cg.grpc;
+option java_multiple_files = true;
+
+message request{
+	int64 timestamp = 1;
+}
+
+message response{
+	string msg = 1;
+}
+
+service ContableService{
+	rpc creation(request) returns (response);
+}
