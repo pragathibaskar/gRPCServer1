@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.cg.grpc.ContableServiceGrpc.ContableServiceImplBase;
 
 import io.grpc.stub.StreamObserver;
-
+import java.text.SimpleDateFormat;
 //import com.cg.grpc.GetPage;
 import com.cg.grpc.request;
 import com.cg.grpc.response;
@@ -24,7 +24,9 @@ public class ContableServiceImpl extends ContableServiceImplBase{
 		
 		response.Builder build = response.newBuilder();
 		Date date = new Date(req.getTimestamp());
-		String msg = "Cierre contable creado para el periodo "+date;
+		SimpleDateFormat formatter = new SimpleDateFormat("MMMM dd yyyy");  
+	        String strDate= formatter.format(date);
+		String msg = "Cierre contable creado para el periodo "+strDate;
 		System.out.println("message "+msg);
 		Message newmsg = new Message();
 		newmsg.setPeriodo(date);
